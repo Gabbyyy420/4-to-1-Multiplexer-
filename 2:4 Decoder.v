@@ -1,24 +1,11 @@
-module decoder(Do, Din, En);
-    input [1:0] Din;
-    input En;
-    output [3:0] Do;
-    
-    reg [3:0] Do;
-    
-    always @(En or Din)
-    begin
-        if (En)
-        begin
-            if (Din == 2'b00)
-                Do= 4'b0001;
-            else if (Din == 2'b01)
-                Do = 4'b0010;
-            else if (Din == 2'b10)
-                Do = 4'b0100;
-            else if (Din == 2'b11)
-                Do = 4'b1000;
-            else
-                $display("Error!");
-        end
-    end
+module decoder_2_to_4(
+    input a0,
+    input a1,
+    output d0,
+    output d1,
+    output d2,
+    output d3
+    );
+               not(an0,a0),(an1,a1);
+               and(d0,an0,an1),(d1,a0,an1),(d2,an0,a1),(d3,a0,a1);
 endmodule
