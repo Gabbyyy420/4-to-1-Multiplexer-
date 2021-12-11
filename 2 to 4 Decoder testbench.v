@@ -1,19 +1,11 @@
-module decoder_tb_v;
-    reg [1:0] Din;
-    reg En;
-    wire [3:0] Do;
-    
-    decoder24 uut(
-        .Do(Do), 
-        .Din(Din), 
-        .En(En)
+module decoder_2_to_4(
+    input a0,
+    input a1,
+    output d0,
+    output d1,
+    output d2,
+    output d3
     );
-    initial begin
-        // Initialize Inputs
-        En = 1;
-        Din =2'b00; #20;
-        Din = 2'b01; #20;
-          Din = 2'b10; #20;
-        Din = 2'b11; #20;
-    end
+               not(an0,a0),(an1,a1);
+               and(d0,an0,an1),(d1,a0,an1),(d2,an0,a1),(d3,a0,a1);
 endmodule
